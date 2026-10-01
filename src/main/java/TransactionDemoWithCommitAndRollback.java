@@ -10,12 +10,12 @@ public class TransactionDemoWithCommitAndRollback {
         Connection con = DriverManager.getConnection(url,uname,password);
         Statement st = con.createStatement();
         System.out.println("Data before transaction");
-        System.out.println("-----------------------------");
+        System.out.println("------------------------------------");
         ResultSet resultSet = st.executeQuery("select * from accounts");
         while (resultSet.next()){
             System.out.println(resultSet.getString(1)+resultSet.getInt(2));
         }
-        System.out.println("transaction begins");
+        System.out.println("Transaction begins...");
         con.setAutoCommit(false);
         st.executeUpdate("update accounts set balance = balance-2000 where Name='Milan'");
         st.executeUpdate("update accounts set balance = balance+2000 where Name='Anushka'");
@@ -28,9 +28,9 @@ public class TransactionDemoWithCommitAndRollback {
         }
         else{
             con.rollback();
-            System.out.println("txn rolled back");
+            System.out.println("Txn rolled back");
         }
-        System.out.println("Data after txn");
+        System.out.println("Data after Txn performed");
         System.out.println("---------------------------");
         ResultSet resultSet1 = st.executeQuery("select * from accounts");
         while (resultSet1.next()){
