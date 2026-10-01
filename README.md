@@ -1,2 +1,2 @@
 # JDBCDemo
-This is my first JDBC demo project using Git. 
+This is JDBC demo project.
